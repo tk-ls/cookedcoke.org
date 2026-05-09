@@ -86,6 +86,11 @@
     }
     .nav-links a:hover { color: var(--text); }
 
+    .external-link {
+      text-decoration: underline !important;
+      color: var(--text) !important;
+    }
+
     /* ─── HAMBURGER ─── */
     .menu-toggle {
       display: none;
@@ -213,7 +218,8 @@
     footer { border-top: 1px solid var(--border); padding: 3rem 2rem; margin-top: auto; }
     .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .footer-text { font-size: 0.85rem; color: var(--text-muted); }
-    .footer-link { color: var(--text); text-decoration: none; font-weight: 500; }
+    .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .footer-link:hover { color: var(--text); }
 
     @media (max-width: 860px) {
       .menu-toggle { display: flex; }
@@ -258,7 +264,7 @@
     <li><a href="#mission" onclick="toggleMenu()">Mission</a></li>
     <li><a href="#governance" onclick="toggleMenu()">Governance</a></li>
     <li><a href="#impact" onclick="toggleMenu()">Impact</a></li>
-    <li><a href="https://cookedcoke.xyz" class="footer-link">Internal Shop →</a></li>
+    <li><a href="https://cookedcoke.xyz" class="external-link" onclick="toggleMenu()">Internal Shop</a></li>
   </ul>
   <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
     <span></span>
@@ -342,8 +348,8 @@
       <p class="footer-text">© 2026 Social Enterprise Initiative. All rights reserved.</p>
     </div>
     <div style="display: flex; gap: 2rem;">
-      <a href="https://cookedcoke.xyz" class="footer-link">Student Portal</a>
-      <a href="mailto:contact@cookedcoke.org" class="footer-link">Contact Admin</a>
+      <a href="https://cookedcoke.xyz" class="footer-link external-link">Student Portal</a>
+      <a href="mailto:contact@cookedcoke.org" class="footer-link external-link">Contact Admin</a>
     </div>
   </div>
 </footer>
