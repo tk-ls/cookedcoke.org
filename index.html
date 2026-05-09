@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooked Coke | Social Enterprise Initiative</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥤</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0B0B;
+      --surface: #141414;
+      --surface-hover: #1C1C1C;
+      --border: #2C2C2C;
+      --text: #FFFFFF;
+      --text-muted: #A0A0A0;
+      --accent: #E8001C;
+      --accent-soft: rgba(232, 0, 28, 0.1);
+      --radius: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      height: 100%;
+    }
+    .card-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ─── LEADERSHIP ─── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .leader-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: left;
+    }
+    .leader-name { font-weight: 600; font-size: 1.1rem; }
+    .leader-role { color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 3rem 2rem; margin-top: auto; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-size: 0.85rem; color: var(--text-muted); }
+    .footer-link { color: var(--text); text-decoration: none; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 5rem 1.5rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Cooked Coke Social Enterprise</a>
+  <ul class="nav-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="https://cookedcoke.xyz" class="footer-link">Internal Shop →</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <span class="hero-tag">Student-Led Initiative</span>
+    <h1 class="hero-title">Business Ethics &<br>Supply Chain Education</h1>
+    <p class="hero-sub">Providing practical vocational experience through an ethical framework of transparency, financial accountability, and community contribution.</p>
+  </section>
+
+  <section id="mission">
+    <div class="section-header">
+      <h2 class="section-title">Our Foundation</h2>
+      <p class="section-desc">More than a refreshment service, we are a pedagogical laboratory for real-world enterprise management.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">⚖️</span>
+        <h3 class="card-title">Ethics First</h3>
+        <p class="card-text">We emphasize the importance of fair pricing and responsible sourcing. Our curriculum focuses on the ethical implications of retail and the role of businesses in a school community.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📊</span>
+        <h3 class="card-title">Digital Accountability</h3>
+        <p class="card-text">Utilizing Square POS for all transactions ensures 100% digital transparency. Every sale is logged, allowing for verifiable financial audits and real-time inventory management.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌱</span>
+        <h3 class="card-title">Health Conscious</h3>
+        <p class="card-text">We are expanding our catalog to prioritize Zero-Sugar and health-conscious refreshments, aligning with school wellness standards for both staff and students.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="governance" style="background: rgba(255,255,255,0.02);">
+    <div class="section-header">
+      <h2 class="section-title">Leadership Team</h2>
+      <p class="section-desc">Directed by students, governed by professional standards.</p>
+    </div>
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <div class="leader-role">COO & Lead Designer</div>
+        <div class="leader-name">William Luk</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-role">Head of Sales</div>
+        <div class="leader-name">Mike Lu</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-role">Customer Relations</div>
+        <div class="leader-name">Frankie Huang</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="section-header">
+      <h2 class="section-title">Philanthropic Commitment</h2>
+      <p class="section-desc">Our success is measured by the support we provide to our community.</p>
+    </div>
+    <div class="card" style="text-align: center; max-width: 800px; margin: 0 auto; border-color: var(--accent);">
+      <h3 class="card-title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">$600 Annually</h3>
+      <p class="leader-role" style="margin-bottom: 1.5rem;">Total Committed Contribution</p>
+      <p class="card-text" style="font-size: 1.1rem;">The Cooked Coke Initiative is committed to donating <strong>$50 per month</strong> to school-approved charities. We believe in the "Social Enterprise" model where business success directly funds social good.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <div class="nav-logo" style="margin-bottom: 0.5rem;">Cooked Coke Co.</div>
+      <p class="footer-text">© 2026 Social Enterprise Initiative. All rights reserved.</p>
+    </div>
+    <div style="display: flex; gap: 2rem;">
+      <a href="https://cookedcoke.xyz" class="footer-link">Student Portal</a>
+      <a href="mailto:contact@cookedcoke.org" class="footer-link">Contact Admin</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
