@@ -24,6 +24,10 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
+    button, input, select, textarea, a {
+      font-family: inherit;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -294,7 +298,7 @@
     </div>
   </section>
 
-  <section id="governance" style="background: rgba(255,255,255,0.02);">
+  <section id="governance">
     <div class="section-header">
       <h2 class="section-title">Leadership Team</h2>
       <p class="section-desc">Directed by students, governed by professional standards.</p>
@@ -331,7 +335,7 @@
 <footer>
   <div class="footer-content">
     <div>
-      <div class="nav-logo" style="margin-bottom: 0.5rem;">
+      <div class="nav-logo" onclick="hideVote()" style="cursor: pointer; margin-bottom: 0.5rem;">
         <span class="nav-logo-main">Cooked Coke Co.</span>
         <span class="nav-logo-sub">Social Enterprise</span>
       </div>
