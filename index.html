@@ -53,6 +53,7 @@
       flex-direction: column;
       text-decoration: none;
       line-height: 1;
+      z-index: 1001;
     }
     .nav-logo-main {
       font-weight: 700;
@@ -79,6 +80,27 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
+
+    /* ─── HAMBURGER ─── */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      padding: 5px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ─── HERO ─── */
     .hero {
@@ -187,7 +209,24 @@
     .footer-text { font-size: 0.85rem; color: var(--text-muted); }
     .footer-link { color: var(--text); text-decoration: none; font-weight: 500; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 80%; max-width: 300px;
+        height: 100vh;
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
+        padding: 8rem 2rem;
+        gap: 2rem;
+        transition: 0.3s ease;
+        z-index: 999;
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.2rem; }
+
       .hero { padding: 5rem 1.5rem; }
       .grid-3 { grid-template-columns: 1fr; }
       .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
@@ -201,12 +240,17 @@
     <span class="nav-logo-main">Cooked Coke Co.</span>
     <span class="nav-logo-sub">Social Enterprise</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#governance">Governance</a></li>
-    <li><a href="#impact">Impact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#mission" onclick="toggleMenu()">Mission</a></li>
+    <li><a href="#governance" onclick="toggleMenu()">Governance</a></li>
+    <li><a href="#impact" onclick="toggleMenu()">Impact</a></li>
     <li><a href="https://cookedcoke.xyz" class="footer-link">Internal Shop →</a></li>
   </ul>
+  <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
 
 <main>
@@ -289,6 +333,18 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function toggleMenu() {
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    if (window.innerWidth <= 860) {
+      toggle.classList.toggle('active');
+      links.classList.toggle('active');
+      document.body.style.overflow = links.classList.contains('active') ? 'hidden' : '';
+    }
+  }
+</script>
 
 </body>
 </html>
