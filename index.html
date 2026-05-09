@@ -43,17 +43,30 @@
       background: rgba(11, 11, 11, 0.8);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 1.2rem 2rem;
+      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .nav-logo-main {
       font-weight: 700;
       font-size: 1.1rem;
       color: var(--text);
-      text-decoration: none;
       letter-spacing: -0.02em;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-top: 2px;
     }
     .nav-links {
       display: flex; gap: 2rem; list-style: none;
@@ -184,7 +197,10 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Cooked Coke Social Enterprise</a>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">Cooked Coke Co.</span>
+    <span class="nav-logo-sub">Social Enterprise</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#mission">Mission</a></li>
     <li><a href="#governance">Governance</a></li>
@@ -261,7 +277,10 @@
 <footer>
   <div class="footer-content">
     <div>
-      <div class="nav-logo" style="margin-bottom: 0.5rem;">Cooked Coke Co.</div>
+      <div class="nav-logo" style="margin-bottom: 0.5rem;">
+        <span class="nav-logo-main">Cooked Coke Co.</span>
+        <span class="nav-logo-sub">Social Enterprise</span>
+      </div>
       <p class="footer-text">© 2026 Social Enterprise Initiative. All rights reserved.</p>
     </div>
     <div style="display: flex; gap: 2rem;">
