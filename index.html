@@ -17,6 +17,7 @@
       --border: #d2d2d7;
       --surface: #f5f5f7;
       --nav-bg: rgba(255, 255, 255, 0.8);
+      --banner-bg: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
     }
 
     [data-theme="dark"] {
@@ -27,6 +28,7 @@
       --border: #424245;
       --surface: #1d1d1f;
       --nav-bg: rgba(0, 0, 0, 0.8);
+      --banner-bg: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -106,7 +108,7 @@
 
     /* ─── HERO ─── */
     .hero {
-      padding: 100px 22px;
+      padding: 120px 22px;
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
@@ -119,14 +121,14 @@
       display: block;
     }
     .hero-title {
-      font-size: 56px;
+      font-size: clamp(40px, 6vw, 56px);
       line-height: 1.07143;
       font-weight: 600;
       letter-spacing: -0.005em;
       margin-bottom: 15px;
     }
     .hero-sub {
-      font-size: 24px;
+      font-size: clamp(19px, 3vw, 24px);
       line-height: 1.16667;
       font-weight: 400;
       letter-spacing: .009em;
@@ -135,7 +137,7 @@
 
     /* ─── SECTIONS ─── */
     section {
-      padding: 80px 22px;
+      padding: 100px 22px;
       max-width: 1024px;
       margin: 0 auto;
     }
@@ -150,16 +152,19 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 20px;
     }
     .tile {
       background: var(--surface);
-      border-radius: 20px;
+      border-radius: 28px;
       padding: 40px;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tile:hover {
+      transform: scale(1.02);
     }
     .tile-title {
       font-size: 24px;
@@ -212,12 +217,13 @@
 
     /* ─── IMPACT ─── */
     .impact-section {
-      background: #000;
-      color: #fff;
+      background: var(--banner-bg);
+      border: 1px solid var(--border);
       text-align: center;
-      padding: 100px 22px;
+      padding: 80px 40px;
       border-radius: 30px;
       margin: 40px 22px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
     .impact-title {
       font-size: 48px;
@@ -225,39 +231,38 @@
       margin-bottom: 20px;
     }
     .impact-amount {
-      font-size: 80px;
+      font-size: clamp(50px, 10vw, 80px);
       font-weight: 700;
       color: #ff3b30;
       margin-bottom: 20px;
     }
 
     footer {
-      background: var(--surface);
-      padding: 60px 22px;
+      padding: 80px 22px;
       font-size: 12px;
       color: var(--text-muted);
-      transition: background-color 0.3s ease;
+      text-align: center;
     }
     .footer-content {
       max-width: 1024px;
       margin: 0 auto;
       border-top: 1px solid var(--border);
-      padding-top: 20px;
+      padding-top: 40px;
     }
     .footer-links {
-      margin-top: 15px;
+      margin-top: 20px;
       display: flex;
-      gap: 20px;
+      gap: 30px;
+      justify-content: center;
     }
     .footer-links a {
       color: var(--accent);
       text-decoration: none;
     }
+    .footer-links a:hover { text-decoration: underline; }
 
     @media (max-width: 734px) {
-      .hero-title { font-size: 40px; }
       .grid { grid-template-columns: 1fr; }
-      .impact-amount { font-size: 50px; }
     }
   </style>
 </head>
@@ -337,8 +342,8 @@
   <div class="impact-section">
     <h2 class="impact-title">Philanthropic Commitment.</h2>
     <p class="impact-amount">$600.00</p>
-    <p class="hero-sub" style="color: #fff;">Annual committed contribution to school-approved charities.</p>
-    <p class="tile-text" style="color: #86868b; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <p class="hero-sub">Annual committed contribution to school-approved charities.</p>
+    <p class="tile-text" style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
       We believe in the "Social Enterprise" model where business success directly funds social good. $50 per month is dedicated to community support.
     </p>
   </div>
