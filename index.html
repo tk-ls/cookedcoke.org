@@ -91,28 +91,6 @@
       color: var(--text) !important;
     }
 
-    /* ─── HAMBURGER ─── */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 1002;
-      padding: 5px;
-      position: relative;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
     /* ─── HERO ─── */
     .hero {
       padding: 8rem 2rem;
@@ -222,31 +200,6 @@
     .footer-link:hover { color: var(--text); }
 
     @media (max-width: 860px) {
-      .menu-toggle { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0; right: 0;
-        width: 100%;
-        height: 100dvh;
-        background: rgba(11, 11, 11, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-        gap: 2.5rem;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 1001;
-        opacity: 0;
-        visibility: hidden;
-      }
-      .nav-links.active {
-        opacity: 1;
-        visibility: visible;
-      }
-      .nav-links a { font-size: 1.5rem; font-weight: 600; }
-
       .hero { padding: 5rem 1.5rem; }
       .grid-3 { grid-template-columns: 1fr; }
       .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
@@ -261,16 +214,8 @@
     <span class="nav-logo-sub">Social Enterprise</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#mission" onclick="toggleMenu()">Mission</a></li>
-    <li><a href="#governance" onclick="toggleMenu()">Governance</a></li>
-    <li><a href="#impact" onclick="toggleMenu()">Impact</a></li>
-    <li><a href="https://cookedcoke.xyz" class="external-link" onclick="toggleMenu()">Product Catalogue</a></li>
+    <li><a href="https://cookedcoke.xyz" class="external-link">Internal Shop</a></li>
   </ul>
-  <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
 </nav>
 
 <main>
@@ -353,18 +298,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  function toggleMenu() {
-    const toggle = document.getElementById('menuToggle');
-    const links = document.getElementById('navLinks');
-    if (window.innerWidth <= 860) {
-      toggle.classList.toggle('active');
-      links.classList.toggle('active');
-      document.body.style.overflow = links.classList.contains('active') ? 'hidden' : '';
-    }
-  }
-</script>
 
 </body>
 </html>
