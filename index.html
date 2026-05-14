@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -16,6 +16,17 @@
       --accent: #0066cc;
       --border: #d2d2d7;
       --surface: #f5f5f7;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="dark"] {
+      --bg: #000000;
+      --text: #f5f5f7;
+      --text-muted: #86868b;
+      --accent: #0066cc;
+      --border: #424245;
+      --surface: #1d1d1f;
+      --nav-bg: rgba(0, 0, 0, 0.8);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +40,7 @@
       font-weight: 400;
       letter-spacing: -0.022em;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ─── NAV ─── */
@@ -36,7 +48,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--nav-bg);
       backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid var(--border);
       height: 44px;
@@ -58,6 +70,11 @@
       text-decoration: none;
       color: var(--text);
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
     .nav-links {
       display: flex;
       gap: 30px;
@@ -71,6 +88,21 @@
       transition: opacity 0.2s;
     }
     .nav-links a:hover { opacity: 1; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .theme-toggle:hover { opacity: 1; }
 
     /* ─── HERO ─── */
     .hero {
@@ -127,6 +159,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      transition: background-color 0.3s ease;
     }
     .tile-title {
       font-size: 24px;
@@ -203,6 +236,7 @@
       padding: 60px 22px;
       font-size: 12px;
       color: var(--text-muted);
+      transition: background-color 0.3s ease;
     }
     .footer-content {
       max-width: 1024px;
@@ -232,8 +266,13 @@
 <nav>
   <div class="nav-content">
     <a href="#" class="nav-logo">Cooked Coke Co.</a>
-    <div class="nav-links">
-      <a href="https://cookedcoke.xyz">Shop</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="https://cookedcoke.xyz">Shop</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+        <span id="themeIcon">🌓</span>
+      </button>
     </div>
   </div>
 </nav>
@@ -314,6 +353,23 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  htmlElement.setAttribute('data-theme', savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
 
 </body>
 </html>
