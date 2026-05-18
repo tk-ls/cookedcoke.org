@@ -1,36 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme_xyz') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.classList.add('no-transition');
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Governance | Cooked Coke Co.</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    })();
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #1d1d1f;
-      --text-muted: #86868b;
-      --accent: #0066cc;
-      --border: #d2d2d7;
-      --surface: #f5f5f7;
-      --nav-bg: rgba(255, 255, 255, 0.8);
-      --banner-bg: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-    }
-
-    [data-theme="dark"] {
       --bg: #000000;
       --text: #f5f5f7;
       --text-muted: #86868b;
@@ -38,7 +28,24 @@
       --border: #424245;
       --surface: #1d1d1f;
       --nav-bg: rgba(0, 0, 0, 0.8);
+      --hero-gradient: linear-gradient(180deg, #fff 0%, #86868b 100%);
       --banner-bg: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #1d1d1f;
+      --text-muted: #86868b;
+      --accent: #0066cc;
+      --border: #d2d2d7;
+      --surface: #f5f5f7;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+      --hero-gradient: linear-gradient(180deg, #1d1d1f 0%, #86868b 100%);
+      --banner-bg: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+    }
+
+    .no-transition * {
+      transition: none !important;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,6 +60,9 @@
       letter-spacing: -0.022em;
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* ─── NAV ─── */
@@ -256,7 +266,7 @@
     .impact-amount {
       font-size: clamp(50px, 10vw, 80px);
       font-weight: 700;
-      color: #ff3b30;
+      color: var(--accent);
       margin-bottom: 20px;
     }
 
@@ -299,7 +309,7 @@
     </a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="https://cookedcoke.xyz">Shop</a></li>
+        <li><a href="https://cookedcoke.co">Shop</a></li>
       </ul>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
         <img src="light.svg" alt="Light Mode" class="theme-icon-light">
@@ -380,7 +390,7 @@
   <div class="footer-content">
     <p>Copyright © 2026 Cooked Coke Social Enterprise Initiative. All rights reserved.</p>
     <div class="footer-links">
-      <a href="https://cookedcoke.xyz">Visit Public Shop</a>
+      <a href="https://cookedcoke.co">Visit Public Shop</a>
       <a href="mailto:contact@cookedcoke.org">Contact Administration</a>
     </div>
   </div>
@@ -390,12 +400,19 @@
   const themeToggle = document.getElementById('themeToggle');
   const htmlElement = document.documentElement;
 
+  // Restore transition after initial load
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      htmlElement.classList.remove('no-transition');
+    }, 100);
+  });
+
   themeToggle.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme_xyz', newTheme);
   });
 </script>
 
