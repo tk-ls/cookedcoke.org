@@ -387,6 +387,10 @@
         <p class="leader-role">Chief Advisor</p>
         <p class="leader-name">Kai Reddy</p>
       </div>
+      <div class="leader-card">
+        <p class="leader-role" id="jayden-role" style="cursor: pointer;">Head of Asset Protection</p>
+        <p class="leader-name">Jayden Tan</p>
+      </div>
     </div>
   </section>
 
@@ -430,6 +434,13 @@
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme_xyz', newTheme);
   });
+
+  const jaydenRole = document.getElementById('jayden-role');
+  if (jaydenRole) {
+    jaydenRole.addEventListener('click', () => {
+      jaydenRole.innerText = 'Garbage Boss';
+    });
+  }
 </script>
 
 </body>
