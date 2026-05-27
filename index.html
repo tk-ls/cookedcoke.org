@@ -438,7 +438,11 @@
   const jaydenRole = document.getElementById('jayden-role');
   if (jaydenRole) {
     jaydenRole.addEventListener('click', () => {
-      jaydenRole.innerText = 'Garbage Boss';
+      if (jaydenRole.innerText === 'Head of Asset Protection') {
+        jaydenRole.innerText = 'Garbage Boss';
+      } else {
+        jaydenRole.innerText = 'Head of Asset Protection';
+      }
     });
   }
 </script>
