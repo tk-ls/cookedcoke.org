@@ -388,8 +388,8 @@
         <p class="leader-name">Kai Reddy</p>
       </div>
       <div class="leader-card">
-        <p class="leader-role" id="jayden-role" style="cursor: pointer;">Head of Asset Protection</p>
-        <p class="leader-name">Jayden Tan</p>
+        <p class="leader-role">Chief Asset Protection Officer</p>
+        <p class="leader-name">Alvin Ng</p>
       </div>
     </div>
   </section>
@@ -434,17 +434,6 @@
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme_xyz', newTheme);
   });
-
-  const jaydenRole = document.getElementById('jayden-role');
-  if (jaydenRole) {
-    jaydenRole.addEventListener('click', () => {
-      if (jaydenRole.innerText === 'Head of Asset Protection') {
-        jaydenRole.innerText = 'Garbage Boss';
-      } else {
-        jaydenRole.innerText = 'Head of Asset Protection';
-      }
-    });
-  }
 </script>
 
 </body>
