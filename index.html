@@ -5,22 +5,23 @@
     (function() {
       const savedTheme = localStorage.getItem('theme_xyz') || 'dark';
       document.documentElement.setAttribute('data-theme', savedTheme);
-      document.documentElement.classList.add('no-transition');
+      document.documentElement.classList.add('no-transition', 'js');
     })();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Recognized Reddam House Governance. The internal framework for transparency, compliance, and philanthropic contribution of the Cooked Coke Social Enterprise." />
-  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="How the Cooked Coke Social Enterprise is run: the approvals it holds, the controls it operates under, and where the money goes." />
+  <meta name="theme-color" content="#05070c" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#eef4f8" media="(prefers-color-scheme: light)" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cookedcoke.org/" />
-  <meta property="og:title" content="Governance | Cooked Coke Co." />
-  <meta property="og:description" content="The internal framework for transparency, compliance, and philanthropic contribution." />
+  <meta property="og:title" content="How the case is run | Cooked Coke Co." />
+  <meta property="og:description" content="The approvals we hold, the controls we operate under, and where the money goes." />
   <meta property="og:image" content="android-chrome-512x512.png" />
 
-  <title>Governance | Cooked Coke Co.</title>
+  <title>How the case is run | Cooked Coke Co.</title>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -28,51 +29,138 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400..700&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap" rel="stylesheet">
   <style>
+    /* ══════════════════════════════════════════════════
+       COOKED COKE CO. — governance
+       Same token system as cookedcoke.co, quiet voice:
+       no saturated fills, no lit shelves. Cyan reads as
+       instrumentation; red stays on the shopfront.
+       ══════════════════════════════════════════════════ */
+
     :root {
-      --bg: #000000;
-      --text: #f5f5f7;
-      --text-muted: #86868b;
-      --accent: #0066cc;
-      --border: #424245;
-      --surface: #1d1d1f;
-      --nav-bg: rgba(0, 0, 0, 0.8);
-      --hero-gradient: linear-gradient(180deg, #fff 0%, #86868b 100%);
-      --banner-bg: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+      color-scheme: dark;
+
+      --void:   #05070c;
+      --deep:   #0a0f1a;
+      --shelf:  #0e1524;
+      --rail-s: #141d2e;
+      --line:   #223049;
+      --frost:  #e9f4fb;
+      --haze:   #8298ae;
+
+      --chill:  #3fd8f7;
+      --coke:   #ff2438;
+      --warn:   #ffb01f;
+
+      --glass:  rgba(255,255,255,.05);
+      --lip:    rgba(63,216,247,.42);
+
+      --display: 'Archivo', system-ui, sans-serif;
+      --body: 'Instrument Sans', system-ui, sans-serif;
+      --mono: 'Martian Mono', ui-monospace, 'SF Mono', monospace;
+
+      --gutter: clamp(18px, 4vw, 40px);
+      --max: 1140px;
     }
 
     [data-theme="light"] {
-      --bg: #ffffff;
-      --text: #1d1d1f;
-      --text-muted: #86868b;
-      --accent: #0066cc;
-      --border: #d2d2d7;
-      --surface: #f5f5f7;
-      --nav-bg: rgba(255, 255, 255, 0.8);
-      --hero-gradient: linear-gradient(180deg, #1d1d1f 0%, #86868b 100%);
-      --banner-bg: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+      color-scheme: light;
+      --void:   #eaf1f7;
+      --deep:   #ffffff;
+      --shelf:  #ffffff;
+      --rail-s: #f2f7fb;
+      --line:   #cfdfeb;
+      --frost:  #071120;
+      --haze:   #566e85;
+      --chill:  #0083a6;
+      --coke:   #d20c22;
+      --warn:   #8a5600;
+      --glass:  rgba(255,255,255,.55);
+      --lip:    rgba(0,131,166,.28);
     }
 
-    .no-transition * {
+    .no-transition *, .no-transition *::before, .no-transition *::after {
       transition: none !important;
+      animation: none !important;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.47059;
-      font-weight: 400;
-      letter-spacing: -0.022em;
+      background: var(--void);
+      color: var(--frost);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.3s ease, color 0.3s ease;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background-color .4s ease, color .4s ease;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 48vh;
+      background: radial-gradient(120% 100% at 50% -10%, var(--lip) 0%, transparent 60%);
+      opacity: .3;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    ::selection { background: var(--chill); color: var(--void); }
+    :focus-visible { outline: 2px solid var(--chill); outline-offset: 3px; border-radius: 3px; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 88;
+      font-size: 10.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      color: var(--haze);
+      display: block;
+    }
+
+    /* ─── DEV NOTICE ─── */
+    .devbar {
+      position: relative;
+      z-index: 901;
+      background: var(--rail-s);
+      border-bottom: 1px solid var(--line);
+      box-shadow: inset 0 2px 0 var(--warn);
+    }
+    .devbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 11px var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 10px 16px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 10.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+    .devbar p { color: var(--frost); }
+    .devbar a {
+      color: var(--warn);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .devbar a:hover { color: var(--frost); }
+    @media (max-width: 560px) {
+      .devbar a { margin-left: 0; }
     }
 
     /* ─── NAV ─── */
@@ -80,359 +168,506 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--nav-bg);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--border);
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: color-mix(in srgb, var(--void) 78%, transparent);
+      backdrop-filter: saturate(150%) blur(18px);
+      -webkit-backdrop-filter: saturate(150%) blur(18px);
+      border-bottom: 1px solid var(--line);
     }
     .nav-content {
       width: 100%;
-      max-width: 1024px;
-      padding: 0 22px;
+      max-width: var(--max);
+      margin: 0 auto;
+      height: 56px;
+      padding: 0 var(--gutter);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--frost); }
+    /* no `display` here — it would outrank the .logo-* toggles below */
+    .nav-logo img { height: 24px; width: auto; }
+    .nav-logo b {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 112, 'wght' 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: .02em;
+      white-space: nowrap;
     }
-    .nav-logo img {
-      height: 22px;
-      width: auto;
+    .nav-logo i {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-style: normal;
+      font-size: 9.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--chill);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 3px 7px;
     }
     .logo-dark { display: none; }
     [data-theme="dark"] .logo-light { display: none; }
     [data-theme="dark"] .logo-dark { display: block; }
-    
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
+
+    .nav-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 26px); }
+    .nav-links { display: flex; gap: clamp(14px, 3vw, 26px); list-style: none; }
     .nav-links a {
-      color: var(--text);
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 88;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--haze);
       text-decoration: none;
-      font-size: 12px;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+      transition: color .2s;
+      padding: 6px 0;
     }
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover { color: var(--frost); }
 
     .theme-toggle {
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      opacity: .7; transition: opacity .2s, background-color .2s;
     }
-    .theme-toggle:hover { opacity: 1; }
-    .theme-toggle img {
-      height: 18px;
-      width: auto;
-    }
+    .theme-toggle:hover { opacity: 1; background: var(--rail-s); }
+    .theme-toggle img { height: 17px; width: auto; }
     .theme-icon-dark { display: none; }
     [data-theme="dark"] .theme-icon-light { display: none; }
     [data-theme="dark"] .theme-icon-dark { display: block; }
 
+    main { position: relative; z-index: 1; flex: 1; }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+    section { padding-block: clamp(52px, 8vw, 92px); }
+
     /* ─── HERO ─── */
-    .hero {
-      padding: 120px 22px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
+    .hero { padding-block: clamp(56px, 10vw, 108px) clamp(30px, 5vw, 56px); }
+    .hero h1 {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 112, 'wght' 800;
+      text-transform: uppercase;
+      font-size: clamp(2.4rem, 7.4vw, 5.2rem);
+      line-height: .9;
+      letter-spacing: -.02em;
+      margin: 16px 0 0;
+      max-width: 16ch;
     }
-    .hero-tag {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-      display: block;
-    }
-    .hero-title {
-      font-size: clamp(40px, 6vw, 56px);
-      line-height: 1.07143;
-      font-weight: 600;
-      letter-spacing: -0.005em;
-      margin-bottom: 15px;
-    }
-    .hero-sub {
-      font-size: clamp(19px, 3vw, 24px);
-      line-height: 1.16667;
-      font-weight: 400;
-      letter-spacing: .009em;
-      color: var(--text-muted);
+    .hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--haze);
+      max-width: 54ch;
+      margin-top: 22px;
     }
 
-    /* ─── SECTIONS ─── */
-    section {
-      padding: 100px 22px;
-      max-width: 1024px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: clamp(28px, 5vw, 40px);
-      line-height: 1.1;
-      font-weight: 600;
-      letter-spacing: 0em;
-      margin-bottom: 40px;
-    }
-
-    .grid {
+    /* the standing declaration — one row of hard facts under the headline */
+    .facts {
+      margin-top: clamp(34px, 6vw, 56px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
     }
-    .tile {
-      background: var(--surface);
-      border-radius: 28px;
-      padding: 40px;
+    .fact { padding: 22px 24px; border-right: 1px solid var(--line); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border-right: 0; padding-right: 0; }
+    .fact dt {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 9.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--haze);
+      margin-bottom: 9px;
+    }
+    .fact dd {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 106, 'wght' 700;
+      text-transform: uppercase;
+      font-size: clamp(14px, 1.9vw, 18px);
+      line-height: 1.15;
+    }
+
+    /* ─── SECTION HEADS ─── */
+    .head { margin-bottom: 32px; }
+    .head h2 {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 114, 'wght' 800;
+      text-transform: uppercase;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      line-height: .95;
+      letter-spacing: -.018em;
+      margin-top: 10px;
+    }
+    .head p { color: var(--haze); margin-top: 12px; max-width: 56ch; font-size: 16px; }
+
+    /* ─── CONTROLS ─── */
+    .controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .control {
+      background: var(--shelf);
+      padding: clamp(22px, 3vw, 34px);
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 12px;
     }
-    .tile:hover {
-      transform: scale(1.02);
-    }
-    .tile-title {
-      font-size: 24px;
-      font-weight: 600;
-    }
-    .tile-text {
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.47;
-    }
-
-    /* ─── LOGBOOK ─── */
-    .log-item {
-      border-bottom: 1px solid var(--border);
-      padding: 30px 0;
-    }
-    .log-date {
-      font-size: 14px;
+    .control-tag {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 9.5px;
       font-weight: 600;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 5px;
+      letter-spacing: .18em;
+      color: var(--chill);
     }
-    .log-title {
-      font-size: 21px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    /* ─── LEADERSHIP ─── */
-    .leader-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-    }
-    .leader-card {
-      padding: 20px 0;
-    }
-    .leader-role {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
+    .control h3 {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 108, 'wght' 700;
       text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .leader-name {
       font-size: 19px;
-      font-weight: 600;
-    }
-
-    /* ─── BANNERS ─── */
-    .banner {
-      background: var(--banner-bg);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 80px 40px;
-      text-align: center;
-      margin: 40px 0;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-    .banner-title {
-      font-size: clamp(28px, 6vw, 48px);
-      font-weight: 600;
-      margin-bottom: 20px;
       line-height: 1.1;
+      letter-spacing: -.008em;
     }
-    .impact-amount {
-      font-size: clamp(50px, 10vw, 80px);
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 20px;
+    .control p { color: var(--haze); font-size: 15px; }
+
+    /* ─── LOGBOOK (genuinely a sequence, so it gets a timeline) ─── */
+    .log { border-left: 1px solid var(--line); margin-left: 6px; }
+    .log-item { padding: 0 0 34px 28px; position: relative; }
+    .log-item:last-child { padding-bottom: 0; }
+    .log-item::before {
+      content: '';
+      position: absolute;
+      left: -4.5px; top: 7px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--void);
+      border: 1px solid var(--chill);
+    }
+    .log-item:first-child::before { background: var(--chill); }
+    .log-date {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--chill);
+    }
+    .log-item h3 {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 108, 'wght' 700;
+      text-transform: uppercase;
+      font-size: 19px;
+      margin: 8px 0 8px;
+      letter-spacing: -.008em;
+    }
+    .log-item p { color: var(--haze); font-size: 15px; max-width: 58ch; }
+
+    /* ─── PEOPLE ─── */
+    .roster { border-top: 1px solid var(--line); }
+    .person {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 20px;
+      align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .person-name {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 108, 'wght' 700;
+      text-transform: uppercase;
+      font-size: clamp(17px, 2.4vw, 23px);
+      letter-spacing: -.01em;
+    }
+    .person-role {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--haze);
     }
 
-    footer {
-      padding: 80px 22px;
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: center;
+    /* ─── GIVING: the one loud moment on this site ─── */
+    .giving {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--shelf);
+      padding: clamp(30px, 6vw, 62px);
+      position: relative;
+      overflow: hidden;
     }
-    .footer-content {
-      max-width: 1024px;
-      margin: 0 auto;
-      border-top: 1px solid var(--border);
-      padding-top: 40px;
+    .giving::before {
+      content: '';
+      position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--chill), transparent);
     }
-    .footer-links {
+    .giving-figure {
+      font-family: var(--display);
+      font-variation-settings: 'wdth' 118, 'wght' 900;
+      font-size: clamp(4rem, 15vw, 10rem);
+      line-height: .82;
+      letter-spacing: -.03em;
+      color: var(--chill);
+      margin: 18px 0 0;
+    }
+    .giving-sub {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 88;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--haze);
       margin-top: 20px;
-      display: flex;
-      gap: 30px;
-      justify-content: center;
     }
-    .footer-links a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .footer-links a:hover { text-decoration: underline; }
+    .giving p.note { color: var(--haze); max-width: 54ch; margin-top: 22px; font-size: 16px; }
 
-    @media (max-width: 734px) {
-      .grid { grid-template-columns: 1fr; }
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      padding-block: 46px 60px;
+      margin-top: clamp(30px, 6vw, 70px);
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 86;
+      font-size: 10.5px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--haze);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--chill); }
+    .colophon {
+      font-family: var(--mono);
+      font-variation-settings: 'wdth' 84;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--haze);
+      opacity: .7;
+    }
+
+    @media (max-width: 860px) {
+      .controls { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: 1fr; }
+      .fact { border-right: 0; border-bottom: 1px solid var(--line); padding-inline: 0; }
+      .fact:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .person { grid-template-columns: 1fr; gap: 6px; }
+      /* the mark alone carries the nav here; the wordmark would force a wrap */
+      .nav-logo i, .nav-logo b { display: none; }
+    }
+
+    .js .rise { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1); }
+    .js .rise.lit { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+      .js .rise { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
 
+<div class="devbar">
+  <div class="devbar-inner">
+    <p>This site is under development.</p>
+    <a href="old/index.html">Go to the old site &rarr;</a>
+  </div>
+</div>
+
 <nav>
   <div class="nav-content">
     <a href="/" class="nav-logo">
-      <img src="Logo Vantablack.svg" alt="Cooked Coke Co." class="logo-light">
-      <img src="Logo White.svg" alt="Cooked Coke Co." class="logo-dark">
+      <img src="Logo Vantablack.svg" alt="" class="logo-light">
+      <img src="Logo White.svg" alt="" class="logo-dark">
+      <b>Cooked Coke</b>
+      <i>Governance</i>
     </a>
     <div class="nav-right">
       <ul class="nav-links">
+        <li><a href="#controls">Controls</a></li>
+        <li><a href="#logbook">Logbook</a></li>
         <li><a href="https://cookedcoke.co">Shop</a></li>
       </ul>
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
-        <img src="light.svg" alt="Light Mode" class="theme-icon-light">
-        <img src="dark.svg" alt="Dark Mode" class="theme-icon-dark">
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch between the dark and light theme">
+        <img src="light.svg" alt="" class="theme-icon-light">
+        <img src="dark.svg" alt="" class="theme-icon-dark">
       </button>
     </div>
   </div>
 </nav>
 
 <main>
-  <section class="hero">
-    <span class="hero-tag">Social Enterprise Initiative</span>
-    <h1 class="hero-title">Recognized Reddam House Governance.</h1>
-    <p class="hero-sub">The internal framework for transparency, compliance, and philanthropic contribution.</p>
+
+  <header class="hero wrap">
+    <span class="eyebrow">Cooked Coke Social Enterprise &nbsp;·&nbsp; Reddam House</span>
+    <h1>How the case is run</h1>
+    <p>
+      We sell drinks and snacks on Level 7 and give the profit away. This page sets out the approval
+      we hold, the rules we work inside, and what we have committed to give.
+    </p>
+    <dl class="facts">
+      <div class="fact">
+        <dt>Status</dt>
+        <dd>Approved school<br>social enterprise</dd>
+      </div>
+      <div class="fact">
+        <dt>Recognised</dt>
+        <dd>May 2026<br>by the Principal</dd>
+      </div>
+      <div class="fact">
+        <dt>Committed giving</dt>
+        <dd>$600 a year<br>to school charities</dd>
+      </div>
+    </dl>
+  </header>
+
+  <section id="controls" class="wrap">
+    <div class="head rise">
+      <span class="eyebrow">What keeps us in bounds</span>
+      <h2>Controls</h2>
+      <p>Three rules govern what we stock, what we may not stock, and how the money is recorded.</p>
+    </div>
+    <div class="controls rise">
+      <article class="control">
+        <span class="control-tag">Menu</span>
+        <h3>Health standards</h3>
+        <p>Everything on the shelf is checked against the school-healthy menu before we order it. We lead with low-sugar and zero-sugar lines.</p>
+      </article>
+      <article class="control">
+        <span class="control-tag">Stock</span>
+        <h3>No overlap with the canteen</h3>
+        <p>We do not stock anything the school canteen sells. We run alongside it as a student-operated service, never in competition with it.</p>
+      </article>
+      <article class="control">
+        <span class="control-tag">Money</span>
+        <h3>Every sale on the record</h3>
+        <p>All takings go through Square. There is no cash drawer and no untracked sale, so the books can be checked at any time.</p>
+      </article>
+    </div>
   </section>
 
-  <section id="compliance">
-    <h2 class="section-title">Operational Compliance.</h2>
-    <div class="grid">
-      <div class="tile">
-        <h3 class="tile-title">Health Standards</h3>
-        <p class="tile-text">Strict 'School-Healthy' menu audited for nutritional compliance. Focused on low-sugar alternatives.</p>
+  <section id="logbook" class="wrap">
+    <div class="head rise">
+      <span class="eyebrow">How we got here</span>
+      <h2>Logbook</h2>
+    </div>
+    <div class="log rise">
+      <div class="log-item">
+        <p class="log-date">May 2026</p>
+        <h3>Approved by the Principal</h3>
+        <p>Formally recognised as a school social enterprise, and moved into the Level 7 Refreshment Hub.</p>
       </div>
-      <div class="tile">
-        <h3 class="tile-title">Inventory Integrity</h3>
-        <p class="tile-text">Zero-overlap policy with school canteen stock. We operate as a complementary vocational service.</p>
-      </div>
-      <div class="tile">
-        <h3 class="tile-title">Digital Ledger</h3>
-        <p class="tile-text">100% digital transparency via Square POS. Every transaction is logged for financial accountability.</p>
+      <div class="log-item">
+        <p class="log-date">April 2026</p>
+        <h3>Pilot run</h3>
+        <p>First trial of the supply arrangements and the digital payment setup, before asking for approval.</p>
       </div>
     </div>
   </section>
 
-  <section id="milestones">
-    <h2 class="section-title">Logbook.</h2>
-    <div class="log-item">
-      <p class="log-date">May 2026</p>
-      <h3 class="log-title">Formal Principal Approval</h3>
-      <p class="tile-text">Official recognition as a school social enterprise. Relocation to Level 7 Refreshment Hub.</p>
+  <section id="people" class="wrap">
+    <div class="head rise">
+      <span class="eyebrow">Who is accountable</span>
+      <h2>People</h2>
     </div>
-    <div class="log-item">
-      <p class="log-date">April 2026</p>
-      <h3 class="log-title">Operational Pilot</h3>
-      <p class="tile-text">Initial testing of ethical supply chain framework and digital payment systems.</p>
-    </div>
-  </section>
-
-  <section id="leadership">
-    <h2 class="section-title">Leadership.</h2>
-    <div class="leader-grid">
-      <div class="leader-card">
-        <p class="leader-role">CEO & CTO</p>
-        <p class="leader-name">William Luk</p>
+    <div class="roster rise">
+      <div class="person">
+        <span class="person-name">William Luk</span>
+        <span class="person-role">Chief Executive &amp; Chief Technology Officer</span>
       </div>
-      <div class="leader-card">
-        <p class="leader-role">CMO & CFO</p>
-        <p class="leader-name">Mike Lu</p>
+      <div class="person">
+        <span class="person-name">Mike Lu</span>
+        <span class="person-role">Chief Marketing &amp; Chief Financial Officer</span>
       </div>
-      <div class="leader-card">
-        <p class="leader-role">COO & CHRO</p>
-        <p class="leader-name">Frankie Huang</p>
+      <div class="person">
+        <span class="person-name">Frankie Huang</span>
+        <span class="person-role">Chief Operating &amp; Chief Human Resources Officer</span>
       </div>
-      <div class="leader-card">
-        <p class="leader-role">General Manager</p>
-        <p class="leader-name">Henry Hsieh</p>
+      <div class="person">
+        <span class="person-name">Henry Hsieh</span>
+        <span class="person-role">General Manager</span>
       </div>
-      <div class="leader-card">
-        <p class="leader-role">Chief Security Officer</p>
-        <p class="leader-name">Alvin Ng</p>
+      <div class="person">
+        <span class="person-name">Alvin Ng</span>
+        <span class="person-role">Chief Security Officer</span>
       </div>
     </div>
   </section>
 
-  <section id="philanthropy">
-    <div class="banner">
-      <h2 class="banner-title">Philanthropic Commitment.</h2>
-      <p class="impact-amount">$600.00</p>
-      <p class="hero-sub">Annual committed contribution to school-approved charities.</p>
-      <p class="tile-text" style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        We believe in the "Social Enterprise" model where business success directly funds social good. $50 per month is dedicated to community support.
+  <section id="giving" class="wrap">
+    <div class="giving rise">
+      <span class="eyebrow">What we give</span>
+      <p class="giving-figure">$600</p>
+      <p class="giving-sub">$50 a month &nbsp;×&nbsp; 12 months &nbsp;·&nbsp; school-approved charities</p>
+      <p class="note">
+        The point of a social enterprise is that trading pays for something beyond itself.
+        This is the floor we hold ourselves to, not a share of whatever happens to be left over.
       </p>
     </div>
   </section>
+
 </main>
 
-<footer>
-  <div class="footer-content">
-    <p>Copyright © 2026 Cooked Coke Social Enterprise Initiative. All rights reserved.</p>
+<footer class="wrap">
+  <div class="footer-grid">
+    <p class="colophon">&copy; 2026 Cooked Coke Social Enterprise Initiative &nbsp;·&nbsp; All rights reserved</p>
     <div class="footer-links">
-      <a href="https://cookedcoke.co">Visit Public Shop</a>
-      <a href="mailto:contact@cookedcoke.co">Contact Administration</a>
+      <a href="https://cookedcoke.co">Visit the shop</a>
+      <a href="mailto:contact@cookedcoke.co">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
-  const themeToggle = document.getElementById('themeToggle');
   const htmlElement = document.documentElement;
 
-  // Restore transition after initial load
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      htmlElement.classList.remove('no-transition');
-    }, 100);
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const next = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    htmlElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme_xyz', next);
   });
 
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme_xyz', newTheme);
+  const revealed = document.querySelectorAll('.rise');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lit');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: .1 });
+    revealed.forEach(el => io.observe(el));
+  } else {
+    revealed.forEach(el => el.classList.add('lit'));
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => htmlElement.classList.remove('no-transition'), 60);
   });
 </script>
 

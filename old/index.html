@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme_xyz') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.classList.add('no-transition');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Recognized Reddam House Governance. The internal framework for transparency, compliance, and philanthropic contribution of the Cooked Coke Social Enterprise." />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cookedcoke.org/" />
+  <meta property="og:title" content="Governance | Cooked Coke Co." />
+  <meta property="og:description" content="The internal framework for transparency, compliance, and philanthropic contribution." />
+  <meta property="og:image" content="../android-chrome-512x512.png" />
+
+  <title>Governance | Cooked Coke Co.</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #f5f5f7;
+      --text-muted: #86868b;
+      --accent: #0066cc;
+      --border: #424245;
+      --surface: #1d1d1f;
+      --nav-bg: rgba(0, 0, 0, 0.8);
+      --hero-gradient: linear-gradient(180deg, #fff 0%, #86868b 100%);
+      --banner-bg: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #1d1d1f;
+      --text-muted: #86868b;
+      --accent: #0066cc;
+      --border: #d2d2d7;
+      --surface: #f5f5f7;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+      --hero-gradient: linear-gradient(180deg, #1d1d1f 0%, #86868b 100%);
+      --banner-bg: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+    }
+
+    .no-transition * {
+      transition: none !important;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.47059;
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 1024px;
+      padding: 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+    }
+    .logo-dark { display: none; }
+    [data-theme="dark"] .logo-light { display: none; }
+    [data-theme="dark"] .logo-dark { display: block; }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .theme-toggle:hover { opacity: 1; }
+    .theme-toggle img {
+      height: 18px;
+      width: auto;
+    }
+    .theme-icon-dark { display: none; }
+    [data-theme="dark"] .theme-icon-light { display: none; }
+    [data-theme="dark"] .theme-icon-dark { display: block; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 120px 22px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .hero-title {
+      font-size: clamp(40px, 6vw, 56px);
+      line-height: 1.07143;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      margin-bottom: 15px;
+    }
+    .hero-sub {
+      font-size: clamp(19px, 3vw, 24px);
+      line-height: 1.16667;
+      font-weight: 400;
+      letter-spacing: .009em;
+      color: var(--text-muted);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 100px 22px;
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: 0em;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .tile {
+      background: var(--surface);
+      border-radius: 28px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tile:hover {
+      transform: scale(1.02);
+    }
+    .tile-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .tile-text {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.47;
+    }
+
+    /* ─── LOGBOOK ─── */
+    .log-item {
+      border-bottom: 1px solid var(--border);
+      padding: 30px 0;
+    }
+    .log-date {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    .log-title {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* ─── LEADERSHIP ─── */
+    .leader-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .leader-card {
+      padding: 20px 0;
+    }
+    .leader-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .leader-name {
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    /* ─── BANNERS ─── */
+    .banner {
+      background: var(--banner-bg);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 80px 40px;
+      text-align: center;
+      margin: 40px 0;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .banner-title {
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .impact-amount {
+      font-size: clamp(50px, 10vw, 80px);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      padding: 80px 22px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 1024px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+    .footer-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+
+    @media (max-width: 734px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+    <a href="index.html" class="nav-logo">
+      <img src="../Logo Vantablack.svg" alt="Cooked Coke Co." class="logo-light">
+      <img src="../Logo White.svg" alt="Cooked Coke Co." class="logo-dark">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="https://cookedcoke.co">Shop</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+        <img src="../light.svg" alt="Light Mode" class="theme-icon-light">
+        <img src="../dark.svg" alt="Dark Mode" class="theme-icon-dark">
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <span class="hero-tag">Social Enterprise Initiative</span>
+    <h1 class="hero-title">Recognized Reddam House Governance.</h1>
+    <p class="hero-sub">The internal framework for transparency, compliance, and philanthropic contribution.</p>
+  </section>
+
+  <section id="compliance">
+    <h2 class="section-title">Operational Compliance.</h2>
+    <div class="grid">
+      <div class="tile">
+        <h3 class="tile-title">Health Standards</h3>
+        <p class="tile-text">Strict 'School-Healthy' menu audited for nutritional compliance. Focused on low-sugar alternatives.</p>
+      </div>
+      <div class="tile">
+        <h3 class="tile-title">Inventory Integrity</h3>
+        <p class="tile-text">Zero-overlap policy with school canteen stock. We operate as a complementary vocational service.</p>
+      </div>
+      <div class="tile">
+        <h3 class="tile-title">Digital Ledger</h3>
+        <p class="tile-text">100% digital transparency via Square POS. Every transaction is logged for financial accountability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="milestones">
+    <h2 class="section-title">Logbook.</h2>
+    <div class="log-item">
+      <p class="log-date">May 2026</p>
+      <h3 class="log-title">Formal Principal Approval</h3>
+      <p class="tile-text">Official recognition as a school social enterprise. Relocation to Level 7 Refreshment Hub.</p>
+    </div>
+    <div class="log-item">
+      <p class="log-date">April 2026</p>
+      <h3 class="log-title">Operational Pilot</h3>
+      <p class="tile-text">Initial testing of ethical supply chain framework and digital payment systems.</p>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2 class="section-title">Leadership.</h2>
+    <div class="leader-grid">
+      <div class="leader-card">
+        <p class="leader-role">CEO & CTO</p>
+        <p class="leader-name">William Luk</p>
+      </div>
+      <div class="leader-card">
+        <p class="leader-role">CMO & CFO</p>
+        <p class="leader-name">Mike Lu</p>
+      </div>
+      <div class="leader-card">
+        <p class="leader-role">COO & CHRO</p>
+        <p class="leader-name">Frankie Huang</p>
+      </div>
+      <div class="leader-card">
+        <p class="leader-role">General Manager</p>
+        <p class="leader-name">Henry Hsieh</p>
+      </div>
+      <div class="leader-card">
+        <p class="leader-role">Chief Security Officer</p>
+        <p class="leader-name">Alvin Ng</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philanthropy">
+    <div class="banner">
+      <h2 class="banner-title">Philanthropic Commitment.</h2>
+      <p class="impact-amount">$600.00</p>
+      <p class="hero-sub">Annual committed contribution to school-approved charities.</p>
+      <p class="tile-text" style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        We believe in the "Social Enterprise" model where business success directly funds social good. $50 per month is dedicated to community support.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>Copyright © 2026 Cooked Coke Social Enterprise Initiative. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://cookedcoke.co">Visit Public Shop</a>
+      <a href="mailto:contact@cookedcoke.co">Contact Administration</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+
+  // Restore transition after initial load
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      htmlElement.classList.remove('no-transition');
+    }, 100);
+  });
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme_xyz', newTheme);
+  });
+</script>
+
+</body>
+</html>
