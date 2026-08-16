@@ -189,16 +189,9 @@
       gap: 20px;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--frost); }
-    /* no `display` here — it would outrank the .logo-* toggles below */
-    .nav-logo img { height: 24px; width: auto; }
-    .nav-logo b {
-      font-family: var(--display);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: .02em;
-      white-space: nowrap;
-    }
+    /* The mark alone: at this size the full lockup would fall under the brand
+       sheet's 180px minimum. Coloured, so it needs no theme swap. */
+    .nav-logo img { height: 26px; width: 26px; display: block; }
     .nav-logo i {
       font-family: var(--mono);
       font-style: normal;
@@ -210,9 +203,6 @@
       border-radius: 3px;
       padding: 3px 7px;
     }
-    .logo-dark { display: none; }
-    [data-theme="dark"] .logo-light { display: none; }
-    [data-theme="dark"] .logo-dark { display: block; }
 
     .nav-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 26px); }
     .nav-links { display: flex; gap: clamp(14px, 3vw, 26px); list-style: none; }
@@ -466,8 +456,7 @@
     @media (max-width: 560px) {
       body { font-size: 16px; }
       .person { grid-template-columns: 1fr; gap: 6px; }
-      /* the mark alone carries the nav here; the wordmark would force a wrap */
-      .nav-logo i, .nav-logo b { display: none; }
+      .nav-logo i { display: none; }
     }
 
     .js .rise { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1); }
@@ -495,10 +484,8 @@
 
 <nav>
   <div class="nav-content">
-    <a href="/" class="nav-logo">
-      <img src="Logo Vantablack.svg" alt="" class="logo-light">
-      <img src="Logo White.svg" alt="" class="logo-dark">
-      <b>Cooked Coke</b>
+    <a href="/" class="nav-logo" aria-label="Cooked Coke Co governance">
+      <img src="brand/cookedcoke-small-logo-400.png" alt="" width="400" height="400">
       <i>Governance</i>
     </a>
     <div class="nav-right">
