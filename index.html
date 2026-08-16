@@ -29,7 +29,7 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400..700&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <style>
     /* ══════════════════════════════════════════════════
        COOKED COKE CO. — governance
@@ -56,9 +56,9 @@
       --glass:  rgba(255,255,255,.05);
       --lip:    rgba(63,216,247,.42);
 
-      --display: 'Archivo', system-ui, sans-serif;
-      --body: 'Instrument Sans', system-ui, sans-serif;
-      --mono: 'Martian Mono', ui-monospace, 'SF Mono', monospace;
+      --display: 'Montserrat', system-ui, sans-serif;
+      --body: 'Montserrat', system-ui, sans-serif;
+      --mono: 'Montserrat', system-ui, sans-serif;
 
       --gutter: clamp(18px, 4vw, 40px);
       --max: 1140px;
@@ -117,13 +117,18 @@
 
     .eyebrow {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 88;
       font-size: 10.5px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: .17em;
       color: var(--haze);
       display: block;
+    }
+
+    /* Montserrat's default figures are proportional; these places line up
+       numbers in columns, so ask for tabular ones. */
+    .readout, .timetable, .fineprint, .code-value, .bay__count, .log-date {
+      font-variant-numeric: tabular-nums;
     }
 
     /* ─── DEV NOTICE ─── */
@@ -143,7 +148,6 @@
       gap: 10px 16px;
       flex-wrap: wrap;
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 10.5px;
       font-weight: 500;
       text-transform: uppercase;
@@ -189,7 +193,7 @@
     .nav-logo img { height: 24px; width: auto; }
     .nav-logo b {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 112, 'wght' 700;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: 13px;
       letter-spacing: .02em;
@@ -197,7 +201,6 @@
     }
     .nav-logo i {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-style: normal;
       font-size: 9.5px;
       letter-spacing: .16em;
@@ -215,7 +218,6 @@
     .nav-links { display: flex; gap: clamp(14px, 3vw, 26px); list-style: none; }
     .nav-links a {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 88;
       font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
@@ -247,7 +249,7 @@
     .hero { padding-block: clamp(56px, 10vw, 108px) clamp(30px, 5vw, 56px); }
     .hero h1 {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 112, 'wght' 800;
+      font-weight: 800;
       text-transform: uppercase;
       font-size: clamp(2.4rem, 7.4vw, 5.2rem);
       line-height: .9;
@@ -275,7 +277,6 @@
     .fact:last-child { border-right: 0; padding-right: 0; }
     .fact dt {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 9.5px;
       font-weight: 500;
       text-transform: uppercase;
@@ -285,7 +286,7 @@
     }
     .fact dd {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 106, 'wght' 700;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: clamp(14px, 1.9vw, 18px);
       line-height: 1.15;
@@ -295,7 +296,7 @@
     .head { margin-bottom: 32px; }
     .head h2 {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 114, 'wght' 800;
+      font-weight: 800;
       text-transform: uppercase;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       line-height: .95;
@@ -315,7 +316,6 @@
     }
     .control-tag {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 9.5px;
       font-weight: 600;
       text-transform: uppercase;
@@ -324,7 +324,7 @@
     }
     .control h3 {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 108, 'wght' 700;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: 19px;
       line-height: 1.1;
@@ -348,7 +348,6 @@
     .log-item:first-child::before { background: var(--chill); }
     .log-date {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 10px;
       font-weight: 600;
       text-transform: uppercase;
@@ -357,7 +356,7 @@
     }
     .log-item h3 {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 108, 'wght' 700;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: 19px;
       margin: 8px 0 8px;
@@ -377,14 +376,13 @@
     }
     .person-name {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 108, 'wght' 700;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: clamp(17px, 2.4vw, 23px);
       letter-spacing: -.01em;
     }
     .person-role {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .12em;
@@ -407,7 +405,7 @@
     }
     .giving-figure {
       font-family: var(--display);
-      font-variation-settings: 'wdth' 118, 'wght' 900;
+      font-weight: 900;
       font-size: clamp(4rem, 15vw, 10rem);
       line-height: .82;
       letter-spacing: -.03em;
@@ -416,7 +414,6 @@
     }
     .giving-sub {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 88;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .16em;
@@ -443,7 +440,6 @@
     .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
     .footer-links a {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 86;
       font-size: 10.5px;
       letter-spacing: .13em;
       text-transform: uppercase;
@@ -454,7 +450,6 @@
     .footer-links a:hover { color: var(--chill); }
     .colophon {
       font-family: var(--mono);
-      font-variation-settings: 'wdth' 84;
       font-size: 10px;
       letter-spacing: .1em;
       text-transform: uppercase;
